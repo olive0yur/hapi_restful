@@ -1,0 +1,62 @@
+# Node.js 忽略项
+
+# Node modules
+node_modules/
+
+# Log files
+logs/
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# MacOS files
+.DS_Store
+
+# Windows files
+Thumbs.db
+ehthumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Hapi specific 忽略项
+
+# Config files (if any)
+config/
+
+# Build directories (if using build tools)
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Ignoring test coverage files
+coverage/
+
+# Local test databases
+*.db
+
+# Additional items
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Specific to Hapi plugins or other modules
+plugins/node_modules/
