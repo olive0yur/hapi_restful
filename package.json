@@ -12,7 +12,9 @@
   "dependencies": {
     "@hapi/hapi": "^20.0.0",
     "@hapi/inert": "^7.1.0",
-    "dotenv": "^16.4.5"
+    "@prisma/client": "^5.14.0",
+    "dotenv": "^16.4.5",
+    "prisma": "^5.14.0"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.3"
