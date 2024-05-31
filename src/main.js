@@ -3,38 +3,45 @@
 const Hapi = require('@hapi/hapi');
 const Path = require('path');
 
+//获取静态文件路路径
+const folders = require('./utils/getStaticFolderList')
+
 const server = Hapi.server({
     port: 3000,
-    host: 'localhost'
+    host: 'localhost',
+    routes: {
+        files: {
+            relativeTo: Path.join(__dirname, 'assets')
+        }
+    }
 });
 
+//设置静态文件路径
+const { serveStaticFiles } = require('./utils/handleStaticFile')
+console.log(serveStaticFiles)
 
 const init = async () => {
-    await server.register(require('@hapi/inert'));
+    try {
+        await server.register(require('@hapi/inert'));
+        server.route({
+            method: 'GET',
+            path: '/',
+            handler: (request, h) => {
+                return h.file('index.html');
 
-
-    // 提供 css 目录中的静态文件
-    server.route({
-        method: 'GET',
-        path: '/css/{param*}',
-        handler: {
-            directory: {
-                path: Path.join(__dirname, 'css')
             }
-        }
-    });
+        });
 
+        //静态文件加载
+        folders.forEach(fileName=> server.route( serveStaticFiles(fileName) )) 
 
+        await server.start();
+        console.log(`Server running at: ${server.info.uri}`);
+        
+    } catch (error) {
+        console.log(error)
+    }
 
-    server.route({
-        method: 'GET',
-        path: '/',
-        handler: (request, h) => {
-            return h.file('./src/index.html');
-        }
-    });
-    await server.start();
-    console.log(`Server running at: ${server.info.uri}`);
 };
 
 process.on('unhandledRejection', (err) => {

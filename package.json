@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "npx tailwindcss -i ./css/main.css -o ./css/output.css --watch"
+    "watch": "npx tailwindcss -i ./src/assets/css/main.css -o ./src/assets/css/output.css --watch"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@hapi/hapi": "^20.0.0",
-    "@hapi/inert": "^7.1.0"
+    "@hapi/inert": "^7.1.0",
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.3"

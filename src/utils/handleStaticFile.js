@@ -1,17 +1,16 @@
-const server = require('../index')
 
 // 封装设置静态文件路由的函数
-const addStaticRoute = (routePath, directoryPath) => {
-    server.route({
+const serveStaticFiles  = (folderName) => {
+    return{
         method: 'GET',
-        path: `${routePath}/{param*}`,
+        path: `/${folderName}/{param*}`,
         handler: {
             directory: {
-                path: Path.join(__dirname, directoryPath),
-                index: ['index.html']
+                path: folderName,
+                index: false
             }
         }
-    });
+    };
 };
 
-module.exports = addStaticRoute
+module.exports = {serveStaticFiles}
